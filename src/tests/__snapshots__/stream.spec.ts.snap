@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StreamUtils ReadChunkFromStream should extract the first N bytes from a stream 1`] = `[TypeError: stream.pause is not a function]`;
+
+exports[`StreamUtils StreamToBuffer should convert a stream to Buffer 1`] = `[TypeError: stream.on is not a function]`;
+
+exports[`StreamUtils streamSize 1`] = `[TypeError: stream.on is not a function]`;
