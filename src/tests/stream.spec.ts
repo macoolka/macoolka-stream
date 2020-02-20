@@ -1,6 +1,6 @@
 import * as fs from 'fs'
 import { join } from 'path'
-import { streamToBuffer, streamToString, readChunkFromStream, streamSize,isStream } from '../'
+import { streamToBuffer, streamToString, readChunkFromStream, streamSize,isStream,stringToStream } from '../'
 const filepath = join(__dirname, 'fixtures',  'pg1008.txt')
 const buffer = fs.readFileSync(filepath)
 const getStream = () => fs.createReadStream(filepath)
@@ -17,6 +17,12 @@ describe('StreamUtils', function () {
         catch(error){
             expect(error).toMatchSnapshot()
         }
+       
+    })
+    it('stringToStream', async () => {
+        const out = stringToStream({})('123');
+        const result =await streamToString({})(out)()
+        expect(result).toEqual('123')
        
     })
     it('StreamToBuffer should convert a stream to Buffer', async () => {

@@ -76,6 +76,19 @@ export const streamToString = ({ encoding = 'utf8' }: { encoding?: string }) => 
 }
 
 /**
+ * Returns a stream with text.
+ * @desczh
+ * 把文本转换为流
+ * @since 0.2.2
+ */
+export const stringToStream = ({ encoding = 'utf8' }: { encoding?: string }) => (a: string): Stream => {
+    var s = new Readable();
+    s._read = function noop() { }; // redundant? see update below
+    s.push(a, encoding);
+    s.push(null);
+    return s;
+}
+/**
  * Reads a certain amount of bytes from the beginning of a Stream, returning a Buffer.
  * The amount of data read might be smaller if the stream ends before it could return the amount of data requested.
  *
